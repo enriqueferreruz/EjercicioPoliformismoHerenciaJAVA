@@ -6,10 +6,10 @@ public class Employee {
 	String firstName;
 	String lastName;
 	int registration;
-	int age;
-	int daysWorked;
-	double salary;
-	int yearsWorked;
+	static int age;
+	static int daysWorked;
+	static double salary;
+	static int yearsWorked;
 	
 	int timeToRetirement=0;
 	int vacationTimeLeft=0;
@@ -27,20 +27,27 @@ public class Employee {
 		this.yearsWorked = yearsWorked;
 	}//constructor
 	
-     public int timeToRetirement() {
+     public static int timeToRetirement() {
     	 int timeToRetirementByAge = 60 - age;
          int timeToRetirementByYearsWorked = 40 - yearsWorked;
          
          return Math.min(timeToRetirementByAge, timeToRetirementByYearsWorked);
     }//timeToRetirement
      
-     public int vacationTimeLeft(int vacationsDaysTaken) {
+     public static int vacationTimeLeft(int vacationsDaysTaken) {
     	 int vacationTimeLeft = (daysWorked/360)*(30- vacationsDaysTaken);
     	 return vacationTimeLeft;
      }//vacationTimeLeft
      
-     public double calculateBonus() {
+     public static double calculateBonus() {
     	double bonus = 2.2*salary;
     	 return Math.round(bonus);
      }
+
+	@Override
+	public String toString() {
+		return "Employee [firstName=" + firstName + ", lastName=" + lastName + ", registration=" + registration
+				+ ", age=" + age + ", daysWorked=" + daysWorked + ", salary=" + salary + ", yearsWorked=" + yearsWorked
+				+ "]";
+	}
 }//class
